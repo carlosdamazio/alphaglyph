@@ -1,3 +1,5 @@
+from argparse import ArgumentParser
+
 
 CODEX = {
     'A': (u'\u0391', 'Alpha'),
@@ -50,17 +52,21 @@ CODEX = {
     'x': (u'\u03C9', 'omega')
 }
 
+DECODEX = dict()
+
 for latin_letter, (greek_letter, name) in CODEX.items():
-    CODEX[greek_letter] = (latin_letter, latin_letter)
+    DECODEX[greek_letter] = (latin_letter, latin_letter)
 
 
 def iter_transcode(s):
-
     for a in s:
         if a in CODEX:
             yield CODEX[a][0]
+        elif a in DECODEX:
+            yield DECODEX[a][0]
         else:
             yield a
+
 
 def transcode(s):
     return ''.join([a for a in iter_transcode(s)])
