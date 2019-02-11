@@ -1,6 +1,3 @@
-from argparse import ArgumentParser
-
-
 CODEX = {
     'A': (u'\u0391', 'Alpha'),
     'B': (u'\u0392', 'Beta'),
